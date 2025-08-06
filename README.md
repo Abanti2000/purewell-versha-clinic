@@ -42,9 +42,9 @@ A modern, responsive medical clinic website built with Next.js 15, TypeScript, a
 
    # If using git
    git clone https://github.com/Abanti2000/purewell-versha-clinic.git
+
    cd purewell-versha-clinic
    
-   # Or download and extract the ZIP file
    
 
 2. **Install dependencies**
