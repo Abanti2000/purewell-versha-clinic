@@ -65,7 +65,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                 </Badge>
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                    PureWell
+                    PureWell Versha
                   </span>
                   <br />
                   Health Clinic

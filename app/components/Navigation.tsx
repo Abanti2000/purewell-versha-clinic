@@ -35,19 +35,19 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
                 <Heart className="w-8 h-8 text-white" />
               </div>
               <div>
-                <span className="text-2xl font-bold text-gray-900">PureWell Health Clinic</span>
+                <span className="text-2xl font-bold text-gray-900">PureWell Versha Health Clinic</span>
                 <div className="text-sm text-blue-600 font-medium">Your Health, Our Priority</div>
               </div>
             </div>
           </div>
 
           {/* Emergency Contact */}
-          <div className="hidden lg:flex items-center bg-red-50 px-4 py-2 rounded-lg border border-red-200">
+          {/* <div className="hidden lg:flex items-center bg-red-50 px-4 py-2 rounded-lg border border-red-200">
             <Phone className="w-4 h-4 text-red-600 mr-2" />
             <div className="text-sm">
               <div className="text-red-600 font-semibold">Emergency: (555) 911-HELP</div>
             </div>
-          </div>
+          </div> */}
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
