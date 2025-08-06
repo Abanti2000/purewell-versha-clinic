@@ -1,4 +1,4 @@
-# 🏥 PureWell Health Clinic Website
+# 🏥 PureWell Versha Health Clinic Website
 
 A modern, responsive medical clinic website built with Next.js 15, TypeScript, and Tailwind CSS. This professional healthcare website provides comprehensive information about medical services, doctors, and online appointment booking.
 
@@ -39,28 +39,29 @@ A modern, responsive medical clinic website built with Next.js 15, TypeScript, a
 ### Installation
 
 1. **Clone or download the project**
-   \`\`\`bash
+
    # If using git
-   git clone <repository-url>
-   cd purewell-clinic
+   git clone https://github.com/Abanti2000/purewell-versha-clinic.git
+   cd purewell-versha-clinic
    
    # Or download and extract the ZIP file
-   \`\`\`
+   
 
 2. **Install dependencies**
-   \`\`\`bash
+
    npm install
-   \`\`\`
+   
 
 3. **Start development server**
-   \`\`\`bash
+
+   npm run build
    npm run dev
-   \`\`\`
+   
 
 4. **Open your browser**
-   \`\`\`
+   
    http://localhost:3000
-   \`\`\`
+   
 
 ## 📋 Available Commands
 
@@ -178,7 +179,7 @@ A modern, responsive medical clinic website built with Next.js 15, TypeScript, a
 
 ## 📁 Project Structure
 
-\`\`\`
+
 purewell-clinic/
 ├── app/
 │   ├── components/          # Page components
@@ -197,7 +198,7 @@ purewell-clinic/
 ├── tsconfig.json           # TypeScript configuration
 ├── package.json            # Dependencies and scripts
 └── README.md               # This file
-\`\`\`
+
 
 ## 🎨 Design System
 
@@ -220,13 +221,12 @@ purewell-clinic/
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
 1. **Push to GitHub**
-   \`\`\`bash
+
    git add .
    git commit -m "Initial commit"
    git push origin main
-   \`\`\`
+   
 
 2. **Deploy to Vercel**
    - Visit [vercel.com](https://vercel.com)
@@ -235,9 +235,9 @@ purewell-clinic/
 
 ### Other Platforms
 1. **Build the project**
-   \`\`\`bash
+
    npm run build
-   \`\`\`
+   
 
 2. **Deploy the `out` folder** to your hosting provider
 
@@ -284,23 +284,23 @@ No environment variables required for basic functionality.
 ### Common Issues
 
 1. **Port 3000 in use**
-   \`\`\`bash
+
    # Use different port
    npm run dev -- -p 3001
-   \`\`\`
+   
 
 2. **Dependencies issues**
-   \`\`\`bash
+
    # Clear cache and reinstall
    rm -rf node_modules package-lock.json
    npm install
-   \`\`\`
+   
 
 3. **Build errors**
-   \`\`\`bash
+
    # Check TypeScript errors
    npm run lint
-   \`\`\`
+   
 
 ## 📞 Support
 
