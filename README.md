@@ -55,6 +55,7 @@ A modern, responsive medical clinic website built with Next.js 15, TypeScript, a
 3. **Start development server**
 
    npm run build
+   
    npm run dev
    
 
