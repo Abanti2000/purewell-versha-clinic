@@ -1,38 +1,183 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {
-  Stethoscope,
-  Heart,
-  Shield,
-  Activity,
-  Eye,
-  Baby,
-  Bone,
-  Brain,
-  Microscope,
-  Pill,
-  Syringe,
-  Calendar,
-  Clock,
-  Star,
-  CheckCircle,
-  Users,
-  Award,
-} from "lucide-react"
+import { Stethoscope, Heart, Shield, Activity, Eye, Baby, Bone, Brain, Microscope, Pill, Syringe, Calendar, Clock, Star, CheckCircle, Users, Award } from 'lucide-react'
+import { useTheme } from '@/contexts/theme-context'
 
 interface ServicesPageProps {
   setCurrentPage: (page: string) => void
 }
 
 export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
+  const { theme } = useTheme()
+
+  const getThemeClasses = () => {
+    switch (theme) {
+      case 'blue':
+        return {
+          gradient: 'from-blue-600 to-blue-800',
+          gradientBg: 'from-blue-50 to-white',
+          button: 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800',
+          accent: 'text-blue-600',
+          bg: 'bg-blue-50',
+          categoryColors: {
+            primary: 'from-blue-500 to-blue-600',
+            specialized: 'from-green-500 to-green-600',
+            diagnostic: 'from-purple-500 to-purple-600',
+            additional: 'from-orange-500 to-orange-600',
+          },
+          whyChoose: {
+            first: 'from-blue-50 to-blue-100',
+            firstIcon: 'bg-blue-600',
+            second: 'from-green-50 to-green-100',
+            secondIcon: 'bg-green-600',
+            third: 'from-purple-50 to-purple-100',
+            thirdIcon: 'bg-purple-600',
+          }
+        }
+      case 'red':
+        return {
+          gradient: 'from-red-600 to-red-800',
+          gradientBg: 'from-red-50 to-white',
+          button: 'from-red-600 to-red-700 hover:from-red-700 hover:to-red-800',
+          accent: 'text-red-600',
+          bg: 'bg-red-50',
+          categoryColors: {
+            primary: 'from-red-500 to-red-600',
+            specialized: 'from-pink-500 to-pink-600',
+            diagnostic: 'from-purple-500 to-purple-600',
+            additional: 'from-orange-500 to-orange-600',
+          },
+          whyChoose: {
+            first: 'from-red-50 to-red-100',
+            firstIcon: 'bg-red-600',
+            second: 'from-pink-50 to-pink-100',
+            secondIcon: 'bg-pink-600',
+            third: 'from-purple-50 to-purple-100',
+            thirdIcon: 'bg-purple-600',
+          }
+        }
+      case 'green':
+        return {
+          gradient: 'from-green-600 to-green-800',
+          gradientBg: 'from-green-50 to-white',
+          button: 'from-green-600 to-green-700 hover:from-green-700 hover:to-green-800',
+          accent: 'text-green-600',
+          bg: 'bg-green-50',
+          categoryColors: {
+            primary: 'from-green-500 to-green-600',
+            specialized: 'from-teal-500 to-teal-600',
+            diagnostic: 'from-blue-500 to-blue-600',
+            additional: 'from-emerald-500 to-emerald-600',
+          },
+          whyChoose: {
+            first: 'from-green-50 to-green-100',
+            firstIcon: 'bg-green-600',
+            second: 'from-teal-50 to-teal-100',
+            secondIcon: 'bg-teal-600',
+            third: 'from-blue-50 to-blue-100',
+            thirdIcon: 'bg-blue-600',
+          }
+        }
+      case 'purple':
+        return {
+          gradient: 'from-purple-600 to-purple-800',
+          gradientBg: 'from-purple-50 to-white',
+          button: 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800',
+          accent: 'text-purple-600',
+          bg: 'bg-purple-50',
+          categoryColors: {
+            primary: 'from-purple-500 to-purple-600',
+            specialized: 'from-indigo-500 to-indigo-600',
+            diagnostic: 'from-violet-500 to-violet-600',
+            additional: 'from-pink-500 to-pink-600',
+          },
+          whyChoose: {
+            first: 'from-purple-50 to-purple-100',
+            firstIcon: 'bg-purple-600',
+            second: 'from-indigo-50 to-indigo-100',
+            secondIcon: 'bg-indigo-600',
+            third: 'from-violet-50 to-violet-100',
+            thirdIcon: 'bg-violet-600',
+          }
+        }
+      case 'orange':
+        return {
+          gradient: 'from-orange-600 to-orange-800',
+          gradientBg: 'from-orange-50 to-white',
+          button: 'from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800',
+          accent: 'text-orange-600',
+          bg: 'bg-orange-50',
+          categoryColors: {
+            primary: 'from-orange-500 to-orange-600',
+            specialized: 'from-amber-500 to-amber-600',
+            diagnostic: 'from-yellow-500 to-yellow-600',
+            additional: 'from-red-500 to-red-600',
+          },
+          whyChoose: {
+            first: 'from-orange-50 to-orange-100',
+            firstIcon: 'bg-orange-600',
+            second: 'from-amber-50 to-amber-100',
+            secondIcon: 'bg-amber-600',
+            third: 'from-yellow-50 to-yellow-100',
+            thirdIcon: 'bg-yellow-600',
+          }
+        }
+      case 'pink':
+        return {
+          gradient: 'from-pink-600 to-pink-800',
+          gradientBg: 'from-pink-50 to-white',
+          button: 'from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800',
+          accent: 'text-pink-600',
+          bg: 'bg-pink-50',
+          categoryColors: {
+            primary: 'from-pink-500 to-pink-600',
+            specialized: 'from-rose-500 to-rose-600',
+            diagnostic: 'from-purple-500 to-purple-600',
+            additional: 'from-red-500 to-red-600',
+          },
+          whyChoose: {
+            first: 'from-pink-50 to-pink-100',
+            firstIcon: 'bg-pink-600',
+            second: 'from-rose-50 to-rose-100',
+            secondIcon: 'bg-rose-600',
+            third: 'from-purple-50 to-purple-100',
+            thirdIcon: 'bg-purple-600',
+          }
+        }
+      default:
+        return {
+          gradient: 'from-blue-600 to-blue-800',
+          gradientBg: 'from-blue-50 to-white',
+          button: 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800',
+          accent: 'text-blue-600',
+          bg: 'bg-blue-50',
+          categoryColors: {
+            primary: 'from-blue-500 to-blue-600',
+            specialized: 'from-green-500 to-green-600',
+            diagnostic: 'from-purple-500 to-purple-600',
+            additional: 'from-orange-500 to-orange-600',
+          },
+          whyChoose: {
+            first: 'from-blue-50 to-blue-100',
+            firstIcon: 'bg-blue-600',
+            second: 'from-green-50 to-green-100',
+            secondIcon: 'bg-green-600',
+            third: 'from-purple-50 to-purple-100',
+            thirdIcon: 'bg-purple-600',
+          }
+        }
+    }
+  }
+
+  const themeClasses = getThemeClasses()
+
   const serviceCategories = [
     {
       title: "Primary Care Services",
       description: "Comprehensive healthcare for your everyday medical needs",
-      color: "from-blue-500 to-blue-600",
+      color: themeClasses.categoryColors.primary,
       services: [
         {
           title: "General Consultations",
@@ -80,7 +225,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
     {
       title: "Specialized Medical Services",
       description: "Advanced medical treatments by our specialist doctors",
-      color: "from-green-500 to-green-600",
+      color: themeClasses.categoryColors.specialized,
       services: [
         {
           title: "Cardiology Services",
@@ -123,7 +268,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
     {
       title: "Diagnostic & Laboratory Services",
       description: "State-of-the-art diagnostic facilities and laboratory testing",
-      color: "from-purple-500 to-purple-600",
+      color: themeClasses.categoryColors.diagnostic,
       services: [
         {
           title: "Laboratory Testing",
@@ -157,7 +302,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
     {
       title: "Additional Healthcare Services",
       description: "Comprehensive support services for your complete healthcare needs",
-      color: "from-orange-500 to-orange-600",
+      color: themeClasses.categoryColors.additional,
       services: [
         {
           title: "Vaccination & Immunization",
@@ -200,9 +345,9 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+    <div className={`min-h-screen bg-gradient-to-br ${themeClasses.gradientBg}`}>
       {/* Header Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className={`py-20 bg-gradient-to-r ${themeClasses.gradient}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Our Medical Services</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8 leading-relaxed">
@@ -212,7 +357,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className={`bg-white ${themeClasses.accent} hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
               onClick={() => setCurrentPage("contact")}
             >
               <Calendar className="w-5 h-5 mr-2" />
@@ -221,7 +366,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent"
+              className={`border-2 border-white text-white hover:bg-white hover:${themeClasses.accent} px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent`}
               onClick={() => setCurrentPage("doctors")}
             >
               Meet Our Specialists
@@ -240,7 +385,6 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
               </div>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">{category.description}</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {category.services.map((service, serviceIndex) => (
                 <Card
@@ -266,7 +410,6 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
                     <CardDescription className="text-gray-600 mb-6 leading-relaxed">
                       {service.description}
                     </CardDescription>
-
                     <div className="mb-6">
                       <h4 className="font-semibold text-gray-900 mb-3">Service Includes:</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -278,10 +421,9 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
                         ))}
                       </div>
                     </div>
-
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Button
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+                        className={`flex-1 bg-gradient-to-r ${themeClasses.button}`}
                         onClick={() => setCurrentPage("contact")}
                       >
                         <Calendar className="w-4 h-4 mr-2" />
@@ -309,10 +451,9 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
               experienced medical professionals.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
-              <div className="bg-blue-600 p-4 rounded-2xl inline-block mb-6">
+            <div className={`text-center p-8 bg-gradient-to-br ${themeClasses.whyChoose.first} rounded-2xl`}>
+              <div className={`${themeClasses.whyChoose.firstIcon} p-4 rounded-2xl inline-block mb-6`}>
                 <Award className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Certified Excellence</h3>
@@ -320,9 +461,8 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
                 ISO certified facility with NABH accreditation ensuring highest quality standards.
               </p>
             </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
-              <div className="bg-green-600 p-4 rounded-2xl inline-block mb-6">
+            <div className={`text-center p-8 bg-gradient-to-br ${themeClasses.whyChoose.second} rounded-2xl`}>
+              <div className={`${themeClasses.whyChoose.secondIcon} p-4 rounded-2xl inline-block mb-6`}>
                 <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Expert Medical Team</h3>
@@ -330,9 +470,8 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
                 Highly qualified doctors and specialists with years of experience in their respective fields.
               </p>
             </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
-              <div className="bg-purple-600 p-4 rounded-2xl inline-block mb-6">
+            <div className={`text-center p-8 bg-gradient-to-br ${themeClasses.whyChoose.third} rounded-2xl`}>
+              <div className={`${themeClasses.whyChoose.thirdIcon} p-4 rounded-2xl inline-block mb-6`}>
                 <Star className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Patient Satisfaction</h3>
@@ -343,7 +482,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className={`py-20 bg-gradient-to-r ${themeClasses.gradient}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Experience Quality Healthcare?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
@@ -353,7 +492,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className={`bg-white ${themeClasses.accent} hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
               onClick={() => setCurrentPage("contact")}
             >
               <Calendar className="w-5 h-5 mr-2" />
@@ -362,7 +501,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent"
+              className={`border-2 border-white text-white hover:bg-white hover:${themeClasses.accent} px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent`}
               onClick={() => setCurrentPage("doctors")}
             >
               Consult Our Doctors

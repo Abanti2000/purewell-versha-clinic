@@ -1,34 +1,153 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Calendar,
-  User,
-  Stethoscope,
-  CreditCard,
-  Shield,
-  CheckCircle,
-  AlertCircle,
-  Heart,
-  Star,
-  Navigation,
-} from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Calendar, User, Stethoscope, CreditCard, Shield, CheckCircle, AlertCircle, Heart, Star, Navigation } from 'lucide-react'
+import { useTheme } from '@/contexts/theme-context'
 
 interface ContactPageProps {
   setCurrentPage: (page: string) => void
 }
 
 export default function ContactPage({ setCurrentPage }: ContactPageProps) {
+  const { theme } = useTheme()
+
+  const getThemeClasses = () => {
+    switch (theme) {
+      case 'blue':
+        return {
+          gradient: 'from-blue-600 to-blue-800',
+          gradientBg: 'from-blue-50 to-white',
+          button: 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800',
+          accent: 'text-blue-600',
+          bg: 'bg-blue-50',
+          cardHeaderBg: 'from-blue-600 to-blue-700',
+          contactIconBg: 'bg-blue-100',
+          contactIconText: 'text-blue-600',
+          focusRing: 'focus:ring-blue-500 focus:border-blue-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-blue-50 to-blue-100',
+            secondText: 'text-blue-600',
+          }
+        }
+      case 'red':
+        return {
+          gradient: 'from-red-600 to-red-800',
+          gradientBg: 'from-red-50 to-white',
+          button: 'from-red-600 to-red-700 hover:from-red-700 hover:to-red-800',
+          accent: 'text-red-600',
+          bg: 'bg-red-50',
+          cardHeaderBg: 'from-red-600 to-red-700',
+          contactIconBg: 'bg-red-100',
+          contactIconText: 'text-red-600',
+          focusRing: 'focus:ring-red-500 focus:border-red-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-red-50 to-red-100',
+            secondText: 'text-red-600',
+          }
+        }
+      case 'green':
+        return {
+          gradient: 'from-green-600 to-green-800',
+          gradientBg: 'from-green-50 to-white',
+          button: 'from-green-600 to-green-700 hover:from-green-700 hover:to-green-800',
+          accent: 'text-green-600',
+          bg: 'bg-green-50',
+          cardHeaderBg: 'from-green-600 to-green-700',
+          contactIconBg: 'bg-green-100',
+          contactIconText: 'text-green-600',
+          focusRing: 'focus:ring-green-500 focus:border-green-500',
+          statsColors: {
+            first: 'from-emerald-50 to-emerald-100',
+            firstText: 'text-emerald-600',
+            second: 'from-green-50 to-green-100',
+            secondText: 'text-green-600',
+          }
+        }
+      case 'purple':
+        return {
+          gradient: 'from-purple-600 to-purple-800',
+          gradientBg: 'from-purple-50 to-white',
+          button: 'from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800',
+          accent: 'text-purple-600',
+          bg: 'bg-purple-50',
+          cardHeaderBg: 'from-purple-600 to-purple-700',
+          contactIconBg: 'bg-purple-100',
+          contactIconText: 'text-purple-600',
+          focusRing: 'focus:ring-purple-500 focus:border-purple-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-purple-50 to-purple-100',
+            secondText: 'text-purple-600',
+          }
+        }
+      case 'orange':
+        return {
+          gradient: 'from-orange-600 to-orange-800',
+          gradientBg: 'from-orange-50 to-white',
+          button: 'from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800',
+          accent: 'text-orange-600',
+          bg: 'bg-orange-50',
+          cardHeaderBg: 'from-orange-600 to-orange-700',
+          contactIconBg: 'bg-orange-100',
+          contactIconText: 'text-orange-600',
+          focusRing: 'focus:ring-orange-500 focus:border-orange-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-orange-50 to-orange-100',
+            secondText: 'text-orange-600',
+          }
+        }
+      case 'pink':
+        return {
+          gradient: 'from-pink-600 to-pink-800',
+          gradientBg: 'from-pink-50 to-white',
+          button: 'from-pink-600 to-pink-700 hover:from-pink-700 hover:to-pink-800',
+          accent: 'text-pink-600',
+          bg: 'bg-pink-50',
+          cardHeaderBg: 'from-pink-600 to-pink-700',
+          contactIconBg: 'bg-pink-100',
+          contactIconText: 'text-pink-600',
+          focusRing: 'focus:ring-pink-500 focus:border-pink-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-pink-50 to-pink-100',
+            secondText: 'text-pink-600',
+          }
+        }
+      default:
+        return {
+          gradient: 'from-blue-600 to-blue-800',
+          gradientBg: 'from-blue-50 to-white',
+          button: 'from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800',
+          accent: 'text-blue-600',
+          bg: 'bg-blue-50',
+          cardHeaderBg: 'from-blue-600 to-blue-700',
+          contactIconBg: 'bg-blue-100',
+          contactIconText: 'text-blue-600',
+          focusRing: 'focus:ring-blue-500 focus:border-blue-500',
+          statsColors: {
+            first: 'from-green-50 to-green-100',
+            firstText: 'text-green-600',
+            second: 'from-blue-50 to-blue-100',
+            secondText: 'text-blue-600',
+          }
+        }
+    }
+  }
+
+  const themeClasses = getThemeClasses()
+
   const [bookingForm, setBookingForm] = useState({
     name: "",
     email: "",
@@ -165,9 +284,9 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+    <div className={`min-h-screen bg-gradient-to-br ${themeClasses.gradientBg}`}>
       {/* Header Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className={`py-20 bg-gradient-to-r ${themeClasses.gradient}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Contact Us & Book Appointment</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8 leading-relaxed">
@@ -177,7 +296,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className={`bg-white ${themeClasses.accent} hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
             >
               <Phone className="w-5 h-5 mr-2" />
               Call Now: (555) 123-CARE
@@ -185,7 +304,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent"
+              className={`border-2 border-white text-white hover:bg-white hover:${themeClasses.accent} px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 bg-transparent`}
             >
               <Navigation className="w-5 h-5 mr-2" />
               Get Directions
@@ -215,14 +334,13 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 or visit our clinic directly.
               </p>
             </div>
-
             {/* Contact Cards */}
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader className="pb-4">
                     <CardTitle className="flex items-center text-xl">
-                      <div className="bg-blue-100 p-3 rounded-lg mr-4 text-blue-600">{info.icon}</div>
+                      <div className={`${themeClasses.contactIconBg} p-3 rounded-lg mr-4 ${themeClasses.contactIconText}`}>{info.icon}</div>
                       {info.title}
                     </CardTitle>
                   </CardHeader>
@@ -233,7 +351,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                           <span className="text-gray-600">{detail.label}:</span>
                           <span
                             className={`font-semibold ${
-                              detail.emergency ? "text-red-600" : detail.primary ? "text-blue-600" : "text-gray-900"
+                              detail.emergency ? "text-red-600" : detail.primary ? themeClasses.accent : "text-gray-900"
                             }`}
                           >
                             {detail.value}
@@ -245,36 +363,20 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </Card>
               ))}
             </div>
-
             {/* Map Placeholder */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-blue-600" />
+                  <MapPin className={`w-5 h-5 mr-2 ${themeClasses.contactIconText}`} />
                   Find Our Location
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                {/* <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center mb-4">
-                  <div className="text-center text-gray-500">
-                    <MapPin className="w-12 h-12 mx-auto mb-4" />
-                    <div className="text-lg font-semibold">Interactive Map</div>
-                    <div className="text-sm">Google Maps Integration</div>
-                    <div className="text-xs mt-2">123 Health Street, Medical District, Mumbai</div>
-                  </div>
-                </div> */}
-
-<img
-  src="/google-map.jpg"
-  alt="Google Map location"
-  className="w-full h-full object-cover"
-/>
-
-
-
-
-
-
+                <img
+                  src="/google-map.jpg"
+                  alt="Google Map location"
+                  className="w-full h-full object-cover rounded-lg mb-4"
+                />
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button className="flex-1 bg-transparent" variant="outline">
                     <Navigation className="w-4 h-4 mr-2" />
@@ -287,15 +389,14 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </div>
               </CardContent>
             </Card>
-
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-green-600">&lt; 2 hrs</div>
+              <div className={`bg-gradient-to-br ${themeClasses.statsColors.first} p-6 rounded-xl text-center`}>
+                <div className={`text-2xl font-bold ${themeClasses.statsColors.firstText}`}>&lt; 2 hrs</div>
                 <div className="text-sm text-gray-600">Response Time</div>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl text-center">
-                <div className="text-2xl font-bold text-blue-600">4.9/5</div>
+              <div className={`bg-gradient-to-br ${themeClasses.statsColors.second} p-6 rounded-xl text-center`}>
+                <div className={`text-2xl font-bold ${themeClasses.statsColors.secondText}`}>4.9/5</div>
                 <div className="text-sm text-gray-600">Patient Rating</div>
               </div>
             </div>
@@ -304,7 +405,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
           {/* Booking Form */}
           <div>
             <Card className="shadow-2xl">
-              <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg">
+              <CardHeader className={`bg-gradient-to-r ${themeClasses.cardHeaderBg} text-white rounded-t-lg`}>
                 <CardTitle className="flex items-center text-2xl">
                   <Calendar className="w-6 h-6 mr-3" />
                   Book Your Appointment
@@ -345,7 +446,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                           />
                         </div>
                       </div>
-
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                         <div>
                           <label className="block text-sm font-medium mb-2">Phone Number *</label>
@@ -371,7 +471,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         <div>
                           <label className="block text-sm font-medium mb-2">Gender</label>
                           <select
-                            className="w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className={`w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 ${themeClasses.focusRing}`}
                             value={bookingForm.gender}
                             onChange={(e) => setBookingForm({ ...bookingForm, gender: e.target.value })}
                           >
@@ -383,7 +483,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         </div>
                       </div>
                     </div>
-
                     {/* Appointment Details */}
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
@@ -394,7 +493,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         <div>
                           <label className="block text-sm font-medium mb-2">Preferred Doctor</label>
                           <select
-                            className="w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className={`w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 ${themeClasses.focusRing}`}
                             value={bookingForm.doctor}
                             onChange={(e) => setBookingForm({ ...bookingForm, doctor: e.target.value })}
                           >
@@ -409,7 +508,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         <div>
                           <label className="block text-sm font-medium mb-2">Service Needed</label>
                           <select
-                            className="w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className={`w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 ${themeClasses.focusRing}`}
                             value={bookingForm.service}
                             onChange={(e) => setBookingForm({ ...bookingForm, service: e.target.value })}
                           >
@@ -422,7 +521,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                           </select>
                         </div>
                       </div>
-
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                         <div>
                           <label className="block text-sm font-medium mb-2">Preferred Date *</label>
@@ -438,7 +536,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         <div>
                           <label className="block text-sm font-medium mb-2">Preferred Time</label>
                           <select
-                            className="w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className={`w-full h-12 p-3 border border-gray-300 rounded-md focus:ring-2 ${themeClasses.focusRing}`}
                             value={bookingForm.time}
                             onChange={(e) => setBookingForm({ ...bookingForm, time: e.target.value })}
                           >
@@ -452,7 +550,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         </div>
                       </div>
                     </div>
-
                     {/* Additional Information */}
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
@@ -498,11 +595,10 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         </div>
                       </div>
                     </div>
-
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className={`${themeClasses.bg} p-4 rounded-lg`}>
                       <div className="flex items-start">
-                        <Shield className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
-                        <div className="text-sm text-blue-800">
+                        <Shield className={`w-5 h-5 ${themeClasses.contactIconText} mr-3 mt-0.5`} />
+                        <div className={`text-sm ${themeClasses.accent.replace('text-', 'text-').replace('-600', '-800')}`}>
                           <p className="font-semibold mb-1">Privacy & Security</p>
                           <p>
                             Your personal and medical information is protected with bank-level security and HIPAA
@@ -511,15 +607,13 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                         </div>
                       </div>
                     </div>
-
                     <Button
                       type="submit"
-                      className="w-full h-14 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-lg font-semibold"
+                      className={`w-full h-14 bg-gradient-to-r ${themeClasses.button} text-lg font-semibold`}
                     >
                       <Calendar className="w-5 h-5 mr-2" />
                       Submit Appointment Request
                     </Button>
-
                     <div className="text-center text-sm text-gray-600 space-y-2">
                       <p>We'll contact you within 2 hours to confirm your appointment.</p>
                       <p>
@@ -538,8 +632,8 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                       Thank you for choosing PureWell Health Clinic. We have received your appointment request and will
                       contact you within 2 hours to confirm the details.
                     </p>
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <p className="text-sm text-blue-800">
+                    <div className={`${themeClasses.bg} p-4 rounded-lg`}>
+                      <p className={`text-sm ${themeClasses.accent.replace('text-', 'text-').replace('-600', '-800')}`}>
                         <strong>What's Next?</strong>
                         <br />
                         Our appointment coordinator will call you to confirm your preferred date and time, and answer
@@ -561,7 +655,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-600">Common questions about appointments and our services</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card>
               <CardHeader>
@@ -574,7 +667,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">What should I bring to my appointment?</CardTitle>
@@ -586,7 +678,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Do you accept insurance?</CardTitle>
@@ -598,7 +689,6 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">What if I need to cancel or reschedule?</CardTitle>
@@ -620,7 +710,7 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center mb-4">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-2 rounded-xl mr-3">
+                <div className={`bg-gradient-to-r ${themeClasses.gradient} p-2 rounded-xl mr-3`}>
                   <Heart className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -643,28 +733,26 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 </div>
               </div>
             </div>
-
             <div>
               <h4 className="font-semibold mb-4 text-lg">Quick Links</h4>
               <div className="space-y-3 text-gray-300">
                 <button
                   onClick={() => setCurrentPage("services")}
-                  className="block hover:text-blue-400 transition-colors"
+                  className={`block hover:${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} transition-colors`}
                 >
                   Our Services
                 </button>
                 <button
                   onClick={() => setCurrentPage("doctors")}
-                  className="block hover:text-blue-400 transition-colors"
+                  className={`block hover:${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} transition-colors`}
                 >
                   Our Doctors
                 </button>
-                <div className="hover:text-blue-400 transition-colors cursor-pointer">Patient Portal</div>
-                <div className="hover:text-blue-400 transition-colors cursor-pointer">Insurance</div>
-                <div className="hover:text-blue-400 transition-colors cursor-pointer">Health Resources</div>
+                <div className={`hover:${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} transition-colors cursor-pointer`}>Patient Portal</div>
+                <div className={`hover:${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} transition-colors cursor-pointer`}>Insurance</div>
+                <div className={`hover:${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} transition-colors cursor-pointer`}>Health Resources</div>
               </div>
             </div>
-
             <div>
               <h4 className="font-semibold mb-4 text-lg">Emergency Contact</h4>
               <div className="space-y-3 text-gray-300">
@@ -673,12 +761,11 @@ export default function ContactPage({ setCurrentPage }: ContactPageProps) {
                 <div className="text-sm text-gray-400">For life-threatening emergencies, call 108</div>
                 <div className="mt-4">
                   <div className="text-sm">General Inquiries</div>
-                  <div className="text-blue-400 font-semibold">(555) 123-CARE</div>
+                  <div className={`${themeClasses.accent.replace('text-', 'text-').replace('-600', '-400')} font-semibold`}>(555) 123-CARE</div>
                 </div>
               </div>
             </div>
           </div>
-
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
             <p>
               &copy; 2024 PureWell Health Clinic. All rights reserved. | Privacy Policy | Terms of Service | HIPAA

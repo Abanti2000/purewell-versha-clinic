@@ -6,6 +6,7 @@ import ServicesPage from "./components/ServicesPage"
 import DoctorsPage from "./components/DoctorsPage"
 import ContactPage from "./components/ContactPage"
 import Navigation from "./components/Navigation"
+import { ThemeProvider } from "@/contexts/theme-context"
 
 export default function PureWellClinic() {
   const [currentPage, setCurrentPage] = useState("home")
@@ -26,9 +27,11 @@ export default function PureWellClinic() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      {renderPage()}
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white">
+        <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        {renderPage()}
+      </div>
+    </ThemeProvider>
   )
 }
