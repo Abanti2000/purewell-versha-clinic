@@ -225,7 +225,9 @@ purewell-clinic/
 1. **Push to GitHub**
 
    git add .
+
    git commit -m "Initial commit"
+   
    git push origin main
    
 
