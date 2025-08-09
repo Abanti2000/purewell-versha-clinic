@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Heart, Menu, X, Phone, ChevronDown, Palette } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown, Palette } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -100,9 +100,10 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
   const themeClasses = getThemeClasses()
 
   const navigation = [
-    { id: "home", label: "HOME" },
+    { id: "", label: "HOME" },
     { id: "services", label: "SERVICES & TREATMENTS" },
     { id: "doctors", label: "OUR DOCTORS" },
+    { id: "blog", label: "BLOG" },
     { id: "contact", label: "CONTACT & BOOK" },
   ]
 
@@ -117,10 +118,14 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={() => handleNavigation("home")}>
+          <div className="flex items-center cursor-pointer" onClick={() => handleNavigation("")}>
             <div className="flex-shrink-0 flex items-center">
-              <div className={`bg-gradient-to-r ${themeClasses.gradient} p-2 rounded-xl mr-3`}>
-                <Heart className="w-8 h-8 text-white" />
+              <div className="mr-3">
+                <img
+                  src="/booklync_logo.jpeg"
+                  alt="Versha Health Clinic Logo"
+                  className="w-12 h-12 object-contain rounded-xl"
+                />
               </div>
               <div>
                 <span className="text-2xl font-bold text-gray-900">Versha Health Clinic</span>
